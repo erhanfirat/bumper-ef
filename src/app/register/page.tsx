@@ -4,8 +4,9 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Kayıt Ol",
-  description: "Yeni kullanıcı kaydı oluşturun",
+  title: "Join our network",
+  description:
+    "Offer PayLater to split servicing and repair work into monthly instalments - interest-free. Use PayNow to take secure payments online.",
 };
 
 export default function Register() {
@@ -33,9 +34,7 @@ export default function Register() {
             <h2 className="text-xl font-semibold mb-0 pb-0">
               Join our network
             </h2>
-            <p className="text-gray-600  mb-6">
-              Free to join, no monthly fees
-            </p>
+            <p className="text-gray-600  mb-6">Free to join, no monthly fees</p>
             <RegisterForm />
 
             <div className="mt-6 text-center">

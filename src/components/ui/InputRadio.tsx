@@ -1,17 +1,15 @@
-import Image from "next/image";
-import { FieldValues } from "react-hook-form";
+"use client";
 
-export type InputRadioProps<T extends FieldValues = FieldValues> =
-  InputProps<T> & {
-    label: string;
-  };
+import Image from "next/image";
+import { InputProps } from "./Input";
+
+export type InputRadioProps = InputProps & {
+  label: string;
+};
 
 export default function InputRadio({
   error,
   label = "",
-  name = "",
-  register,
-  validationRules = {},
   ...htmlInputAttrs
 }: InputRadioProps) {
   const generateInputRadioIcons = () => {
@@ -48,7 +46,6 @@ export default function InputRadio({
         </>
       );
     }
-    return null;
   };
 
   return (
@@ -60,12 +57,7 @@ export default function InputRadio({
                         has-[:checked]:bg-black has-[:checked]:text-white
                         ${error ? "border-red-500" : ""}`}
       >
-        <input
-          type="radio"
-          className="peer hidden"
-          {...((register && register(name, validationRules)) || {})}
-          {...htmlInputAttrs}
-        />
+        <input type="radio" className="peer hidden" {...htmlInputAttrs} />
         <span className="font-medium">{label}</span>
         {generateInputRadioIcons()}
       </label>

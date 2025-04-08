@@ -1,6 +1,6 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { FieldValues, useForm } from "react-hook-form";
 import Image from "next/image";
 import Button from "../ui/Button";
 import FormInput from "../ui/FormInput";
@@ -47,10 +47,8 @@ export default function RegisterForm() {
       <FormInput
         label="Name"
         icon="/icons/user.svg"
-        name="name"
         type="text"
-        register={register}
-        validationRules={{
+        {...register("name", {
           required: "Name is required",
           maxLength: {
             value: 255,
@@ -60,44 +58,38 @@ export default function RegisterForm() {
             value: /^[a-zA-Z0-9]*$/,
             message: "Name can contain only letters and numbers",
           },
-        }}
+        })}
         error={errors.name?.message}
       />
       <FormInput
         label="Company"
         icon="/icons/company.svg"
         type="text"
-        name="company"
-        register={register}
-        validationRules={{
+        {...register("company", {
           maxLength: {
             value: 255,
             message: "Company cannot be longer than 255 characters",
           },
-        }}
+        })}
         error={errors.company?.message}
       />
       <FormInput
         label="Mobile phone number"
         type="tel"
         icon="/icons/phone.svg"
-        name="mobile_phone"
-        register={register}
-        validationRules={{
+        {...register("mobile_phone", {
           pattern: {
             value: /^0(\s*)7(\s*)(\d(\s*)){9}$/,
             message: "Mobile phone number is not valid",
           },
-        }}
+        })}
         error={errors.mobile_phone?.message}
       />
       <FormInput
         label="Email address"
         type="text"
         icon="/icons/email.svg"
-        name="email_address"
-        register={register}
-        validationRules={{
+        {...register("email_address", {
           pattern: {
             value:
               /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
@@ -111,15 +103,13 @@ export default function RegisterForm() {
             value: 5,
             message: "Email address must be longer than 5 characters",
           },
-        }}
+        })}
         error={errors.email_address?.message}
       />
       <FormInput
         label="Postcode"
         icon="/icons/house.svg"
-        name="postcode"
-        register={register}
-        validationRules={{
+        {...register("postcode", {
           pattern: {
             value: /^[a-zA-Z0-9]*$/,
             message: "Postcode can contain only letters and numbers",
@@ -128,7 +118,7 @@ export default function RegisterForm() {
             value: 30,
             message: "Postcode cannot be longer than 30 characters",
           },
-        }}
+        })}
         error={errors.postcode?.message}
       />
 
@@ -151,21 +141,26 @@ export default function RegisterForm() {
         <div className="flex gap-2">
           <InputRadio
             label="PayLater"
-            name="payment-type"
-            register={register}
-            validationRules={{ required: "Please select a payment type" }}
+            {...register("payment-type", {
+              required: "Please select a payment type",
+            })}
             error={errors["payment-type"]?.message}
             value="pay_later"
           />
           <InputRadio
             label="PayNow"
-            name="payment-type"
-            register={register}
-            validationRules={{ required: "Please select a payment type" }}
+            {...register("payment-type", {
+              required: "Please select a payment type",
+            })}
             error={errors["payment-type"]?.message}
             value="pay_now"
           />
         </div>
+        {errors["payment-type"]?.message && (
+          <span className="text-red-500 text-sm mt-1">
+            {errors["payment-type"]?.message}
+          </span>
+        )}
       </div>
 
       <Button
