@@ -1,7 +1,7 @@
 import Link from "next/link";
-import Button from "../ui/Button";
 import Image from "next/image";
 import Star from "../icons/Star";
+import ButtonLink from "../ui/ButtonLink";
 
 export default function Hero() {
   return (
@@ -9,7 +9,7 @@ export default function Hero() {
       <div className="absolute inset-0 bg-[#141725] opacity-70"></div>
       <div className="container mx-auto px-4 z-2 relative">
         <div className="flex flex-col items-start">
-          <p className="flex space-x-3 items-center text-white text-lg font-semibold mb-2 py-4">
+          <div className="flex space-x-3 items-center text-white text-lg font-semibold mb-2 py-4">
             <span>Excellent</span>
             <div className="flex space-x-0.5">
               <Star
@@ -48,7 +48,7 @@ export default function Hero() {
               <Image src="/icons/star.svg" alt="" width={20} height={20} />{" "}
               <span className="font-normal">Trustpilot</span>
             </span>
-          </p>
+          </div>
           <h1 className="text-4xl md:text-7xl font-oswald font-bold text-white dark:text-white mb-4">
             BECOME A BUMPER APPROVED DEPENDABLE DEALERSHIP
           </h1>
@@ -56,11 +56,12 @@ export default function Hero() {
             Join our network of 3,000+ garages and dealerships who already offer
             Bumper to their customers.
           </p>
-          <Button
+          <ButtonLink
             label="Register your interest"
             size="lg"
             icon="/icons/right-arrow.svg"
             rounded
+            href="/register"
           />
           <p className="text-white dark:text-gray-300 mt-4">
             Already registered?{" "}

@@ -1,10 +1,12 @@
 import Hero from "@/components/shared/Hero";
 import Button from "@/components/ui/Button";
+import ButtonLink from "@/components/ui/ButtonLink";
 import Image from "next/image";
+import { redirect } from "next/navigation";
 
 export default function Home() {
   return (
-    <main className="flex-1 mt-[-14px]">
+    <main className="flex-1 ">
       <Hero />
 
       <section className="py-16">
@@ -76,10 +78,11 @@ export default function Home() {
                   </div>
                 </li>
               </ul>
-              <Button
+              <ButtonLink
                 label="Register your interest"
                 icon="/icons/right-arrow.svg"
                 rounded
+                href="/register"
               />
             </div>
             <div className="min-w-[350px] sm:min-w-[480px]">

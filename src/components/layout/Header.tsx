@@ -7,7 +7,7 @@ import Button from "../ui/Button";
 
 export default function Header() {
   return (
-    <header className="w-full">
+    <header className="w-full mb-[-14px]">
       {/* Üst siyah çubuk */}
       <div className="bg-black text-white rounded-b-2xl flex relative z-2">
         <div className="container mx-auto px-4 flex justify-between">
