@@ -5,8 +5,8 @@ import Star from "../icons/Star";
 
 export default function Hero() {
   return (
-    <section className="bg-[url(/images/hero-bg.jpeg)] bg-cover bg-center py-20 relative">
-      <div className="absolute inset-0 bg-black opacity-50"></div>
+    <section className="bg-[url(/images/hero-bg.jpeg)] bg-cover bg-position-[-50px 0] py-20 relative">
+      <div className="absolute inset-0 bg-[#141725] opacity-70"></div>
       <div className="container mx-auto px-4 z-2 relative">
         <div className="flex flex-col items-start">
           <p className="flex space-x-3 items-center text-white text-lg font-semibold mb-2 py-4">

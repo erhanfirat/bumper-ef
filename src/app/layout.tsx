@@ -10,7 +10,7 @@ const oswald = Oswald({
 });
 
 const roboto = Roboto({
-  weight: ["400", "700"],
+  weight: ["300", "400", "700"],
   subsets: ["latin"],
   variable: "--font-roboto",
 });
