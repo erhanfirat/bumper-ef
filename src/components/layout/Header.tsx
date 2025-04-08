@@ -28,7 +28,7 @@ export default function Header() {
       </div>
 
       {/* Alt turuncu çubuk */}
-      <div className="bg-orange-500 text-white pb-[.65rem] pt-[calc(.65rem+12px)] mt-[-12px] rounded-b-2xl relative z-1">
+      <div className="bg-orange-500 text-white pb-[.65rem] pt-[calc(.65rem+14px)] mt-[-14px] rounded-b-2xl relative z-1">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center space-x-3">
             <Link href="/" className="flex items-center">
