@@ -88,7 +88,23 @@ export default function FormInput({
           })}
         </div>
       ) : (
-        <Input {...htmlInputAttrs} />
+        <div className="relative">
+          <Input
+            className={`w-full ${error ? "border-red-500" : ""} ${
+              htmlInputAttrs.className || ""
+            }`}
+            {...htmlInputAttrs}
+          />
+          <Image
+            src="/icons/exclamation.svg"
+            className={`${
+              error ? "block" : "hidden"
+            } absolute right-4 top-1/2 transform -translate-y-1/2`}
+            alt={label}
+            height={20}
+            width={5}
+          />
+        </div>
       )}
       {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
     </div>
