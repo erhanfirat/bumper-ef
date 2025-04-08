@@ -1,15 +1,15 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-const activeLinkStyles = `
-after:content-['']
-after:absolute
-after:h-[8px]
-after:left-0
-after:right-0
-after:bottom-[-4px]
-after:bg-orange-500
-after:rounded-2xl`;
+const currentLinkStyles = `
+aria-current:after:content-['']
+aria-current:after:absolute
+aria-current:after:h-[8px]
+aria-current:after:left-0
+aria-current:after:right-0
+aria-current:after:bottom-[-4px]
+aria-current:after:bg-orange-500
+aria-current:after:rounded-2xl`;
 
 const hoverLinkStyles = `
 hover:after:content-['']
@@ -36,7 +36,7 @@ export default function HeaderLink({
       href={href}
       // EF: aria-current is chosen for accessibility to indicate the current page semantically
       aria-current={isActive ? "page" : undefined}
-      className={`relative text-sm h-[44px] flex items-center ${hoverLinkStyles}`}
+      className={`relative text-sm h-[44px] flex items-center ${hoverLinkStyles} ${currentLinkStyles}`}
     >
       {label}
     </Link>
