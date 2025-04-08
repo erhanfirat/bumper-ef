@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import HeaderLink from "../ui/HeaderLink";
+import Image from "next/image";
 
 export default function Header() {
   return (
@@ -25,11 +26,18 @@ export default function Header() {
       {/* Alt turuncu çubuk */}
       <div className="bg-orange-500 text-white py-4 pt-[32px] mt-[-12px] rounded-b-2xl relative z-1">
         <div className="container mx-auto px-4 flex justify-between items-center">
-          <div className="flex items-center">
+          <div className="flex items-center space-x-3">
             <Link href="/" className="flex items-center">
-              <span className="text-2xl font-bold">BUMPER</span>
+              <Image
+                className="dark:invert"
+                src="/bumper-logo.svg"
+                alt="Bumer"
+                width={126}
+                height={32}
+                priority
+              />
             </Link>
-            for business
+            <span className="font-bold text-black"> for business</span>
           </div>
 
           <div className="flex items-center space-x-4">
