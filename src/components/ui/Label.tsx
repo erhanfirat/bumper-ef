@@ -1,7 +1,9 @@
 import Image from "next/image";
-import Input, { InputProps } from "./Input";
+import { LabelHTMLAttributes, PropsWithChildren } from "react";
 
-type FormInputProps = InputProps & {
+type FormInputProps = PropsWithChildren<
+  LabelHTMLAttributes<HTMLLabelElement>
+> & {
   label: string;
   icon?: string;
   formClassName?: string;
@@ -11,7 +13,7 @@ export default function FormInput({
   label,
   icon,
   formClassName = "",
-  ...htmlInputAttrs
+  children,
 }: FormInputProps) {
   return (
     <div className={`flex flex-col mt-3 mb-6 ${formClassName}`}>
@@ -27,7 +29,7 @@ export default function FormInput({
         )}
         {label}
       </label>
-      <Input {...htmlInputAttrs} />
+      {children}
     </div>
   );
 }
