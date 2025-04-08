@@ -1,5 +1,4 @@
-import Button from "@/components/ui/Button";
-import FormInput from "@/components/ui/FormInput";
+import RegisterForm from "@/components/shared/RegisterForm";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -30,50 +29,17 @@ export default function Register() {
             instalments - interest-free. Use PayNow to take secure payments
             online.
           </p>
-          <div className="p-10 bg-white dark:bg-gray-800 rounded-3xl shadow-lg overflow-hidden">
+          <div className="p-10 bg-white rounded-3xl shadow-lg overflow-hidden">
             <h2 className="text-xl font-semibold mb-0 pb-0">
               Join our network
             </h2>
-            <p className="text-gray-600 dark:text-gray-400 mb-6">
+            <p className="text-gray-600  mb-6">
               Free to join, no monthly fees
             </p>
-            <form className="space-y-4">
-              <FormInput label="Name" icon="/icons/user.svg" />
-              <FormInput label="Company" icon="/icons/company.svg" />
-              <FormInput
-                label="Mobile phone number"
-                type="tel"
-                pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
-                icon="/icons/phone.svg"
-              />
-              <FormInput
-                label="Email address"
-                type="email"
-                icon="/icons/email.svg"
-              />
-              <FormInput label="Postcode" icon="/icons/house.svg" />
-              <FormInput
-                label="What services are you interested in?"
-                description="Please select the services you’re interested in offering your customers"
-                icon="/icons/service.svg"
-                type="radio"
-                options={[
-                  { label: "PayLater", value: "paylater" },
-                  { label: "PayNow", value: "paynow" },
-                ]}
-                name="payment-type"
-              />
-              <Button
-                label="Register"
-                type="submit"
-                icon="/icons/right-arrow.svg"
-                className="w-full"
-                rounded
-              />
-            </form>
+            <RegisterForm />
 
             <div className="mt-6 text-center">
-              <p className="text-sm text-gray-600 dark:text-gray-400">
+              <p className="text-sm text-gray-600 ">
                 Already registered?{" "}
                 <Link href="/" className="text-green-500 hover:underline">
                   Login

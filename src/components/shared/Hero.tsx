@@ -49,10 +49,10 @@ export default function Hero() {
               <span className="font-normal">Trustpilot</span>
             </span>
           </div>
-          <h1 className="text-4xl md:text-7xl font-oswald font-bold text-white dark:text-white mb-4">
+          <h1 className="text-4xl md:text-7xl font-oswald font-bold text-white mb-4">
             BECOME A BUMPER APPROVED DEPENDABLE DEALERSHIP
           </h1>
-          <p className="w-full sm:w-3/6 text-xl text-white dark:text-gray-300 mb-6">
+          <p className="w-full sm:w-3/6 text-xl text-white mb-6">
             Join our network of 3,000+ garages and dealerships who already offer
             Bumper to their customers.
           </p>
@@ -63,7 +63,7 @@ export default function Hero() {
             rounded
             href="/register"
           />
-          <p className="text-white dark:text-gray-300 mt-4">
+          <p className="text-white mt-4">
             Already registered?{" "}
             <Link
               href="/login"
