@@ -4,6 +4,7 @@ import Link from "next/link";
 import HeaderLink from "../ui/HeaderLink";
 import Image from "next/image";
 import Button from "../ui/Button";
+import ButtonLink from "../ui/ButtonLink";
 
 export default function Header() {
   return (
@@ -44,7 +45,7 @@ export default function Header() {
           </div>
 
           <div className="flex items-center space-x-4">
-            <Button label="Register" size="sm" />
+            <ButtonLink href="/register" label="Register" size="sm" />
           </div>
         </div>
       </div>
