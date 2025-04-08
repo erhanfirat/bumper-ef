@@ -16,8 +16,14 @@ export default function Header() {
             <HeaderLink href="/drivers" label="For drivers" />
           </div>
           <div className="flex items-center space-x-4">
-            <button className="text-white text-sm px-4 py-[4px] border rounded-md font-medium hover:bg-orange-600 transition-colors">
-              Partner login
+            <button className="flex space-x-3 text-white text-sm px-4 py-[4px] border rounded-md font-medium hover:bg-orange-600 transition-colors">
+              <span>Partner login </span>
+              <Image
+                src="/nav-right-ico.svg"
+                alt="partner login"
+                width={12}
+                height={12}
+              />
             </button>
           </div>
         </div>
@@ -29,7 +35,6 @@ export default function Header() {
           <div className="flex items-center space-x-3">
             <Link href="/" className="flex items-center">
               <Image
-                className="dark:invert"
                 src="/bumper-logo.svg"
                 alt="Bumer"
                 width={126}
