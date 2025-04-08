@@ -1,10 +1,11 @@
-type ButtonProps = {
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   label: string;
   icon?: string;
   onClick?: () => void;
   variant?: "primary" | "secondary" | "tertiary";
   size?: "sm" | "md" | "lg";
   rounded?: boolean;
+  className?: string;
 };
 
 export default function Button({
@@ -14,6 +15,8 @@ export default function Button({
   variant = "primary",
   size = "md",
   rounded = false,
+  className = "",
+  ...htmlBtnAttrs
 }: ButtonProps) {
   const baseStyles = `flex items-center justify-center font-medium transition-colors 
     focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer ${
@@ -40,8 +43,9 @@ export default function Button({
 
   return (
     <button
-      className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]}`}
+      className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
       onClick={onClick}
+      {...htmlBtnAttrs}
     >
       {label}
       {icon && (
