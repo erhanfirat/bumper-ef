@@ -16,13 +16,13 @@ export default function Button({
   rounded = false,
 }: ButtonProps) {
   const baseStyles = `flex items-center justify-center font-medium transition-colors 
-    focus:outline-none focus:ring-2 focus:ring-offset-2 ${
+    focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer ${
       rounded ? "rounded-full" : "rounded-md"
     } `;
 
   const variantStyles = {
-    primary: "bg-green-500 text-black border border-black hover:bg-green-600",
-    secondary: "bg-black text-white border border-white hover:bg-gray-100",
+    primary: "bg-green-500 text-black border border-black hover:bg-green-400",
+    secondary: "bg-black text-white border border-white hover:bg-gray-800",
     tertiary: "bg-transparent text-black hover:bg-gray-100",
   };
 
