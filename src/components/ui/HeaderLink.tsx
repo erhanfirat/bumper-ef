@@ -18,7 +18,7 @@ hover:after:h-[8px]
 hover:after:left-0
 hover:after:right-0
 hover:after:bottom-[-4px]
-hover:after:bg-white
+hover:after:bg-orange-400
 hover:after:rounded-2xl`;
 
 export default function HeaderLink({
