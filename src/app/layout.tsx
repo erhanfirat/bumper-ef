@@ -22,6 +22,17 @@ export const metadata: Metadata = {
     width: "device-width",
     initialScale: 1,
   },
+  authors: [
+    {
+      name: "Erhan FIRAT",
+      url: "https://bumper.com",
+    },
+  ],
+  icons: {
+    icon: "/favicon/favicon.ico",
+    shortcut: "/favicon/favicon.ico",
+    apple: "/favicon/apple-touch-icon.png",
+  },
   keywords: [
     "Bumper",
     "Car Service",
