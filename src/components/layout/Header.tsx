@@ -20,7 +20,7 @@ export default function Header() {
             <Button
               label="Partner login"
               size="sm"
-              icon="/nav-right-ico.svg"
+              icon="/icons/nav-right-ico.svg"
               variant="secondary"
             />
           </div>
