@@ -1,5 +1,6 @@
 import Image from "next/image";
 import Input, { InputProps } from "./Input";
+import { UseFormRegisterReturn } from "react-hook-form";
 
 type OptionData = {
   label: string;
@@ -14,6 +15,7 @@ type FormInputProps = InputProps & {
   options?: OptionData[];
   error?: string;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  register?: UseFormRegisterReturn;
 };
 
 export default function FormInput({
@@ -23,11 +25,54 @@ export default function FormInput({
   formClassName = "",
   options = [],
   error,
+  register,
   ...htmlInputAttrs
 }: FormInputProps) {
+  const { className, ...restHtmlInputAttrs } = htmlInputAttrs;
+  const inputId = label.replace(/\s+/g, "-").toLowerCase();
+
+  const generateInputRadioIcons = () => {
+    if (htmlInputAttrs.type === "radio") {
+      if (error) {
+        return (
+          <Image
+            src="/icons/exclamation.svg"
+            className="block"
+            alt={label}
+            height={20}
+            width={5}
+            unoptimized
+          />
+        );
+      } else {
+        return (
+          <>
+            <Image
+              src="/icons/check.svg"
+              className="peer-checked:block hidden"
+              alt={label}
+              width={20}
+              height={20}
+              unoptimized
+            />
+            <Image
+              src="/icons/plus.svg"
+              className="peer-checked:hidden block peer-invalid:hidden"
+              alt={label}
+              width={20}
+              height={20}
+              unoptimized
+            />
+          </>
+        );
+      }
+    }
+    return null;
+  };
+
   return (
     <div className={`flex flex-col mt-3 mb-6 ${formClassName}`}>
-      <label className="flex items-center font-semibold mb-2">
+      <label className="flex items-center font-semibold mb-2" htmlFor={inputId}>
         {icon && (
           <Image
             src={icon}
@@ -61,28 +106,7 @@ export default function FormInput({
                   {...htmlInputAttrs}
                 />
                 <span className=" font-medium">{option.label}</span>
-
-                <Image
-                  src="/icons/check.svg"
-                  className="peer-checked:block hidden"
-                  alt={option.label}
-                  width={20}
-                  height={20}
-                />
-                <Image
-                  src="/icons/plus.svg"
-                  className="peer-checked:hidden block peer-invalid:hidden"
-                  alt={option.label}
-                  width={20}
-                  height={20}
-                />
-                <Image
-                  src="/icons/exclamation.svg"
-                  className="peer-invalid:block hidden"
-                  alt={option.label}
-                  height={20}
-                  width={5}
-                />
+                {generateInputRadioIcons()}
               </label>
             );
           })}
@@ -90,10 +114,11 @@ export default function FormInput({
       ) : (
         <div className="relative">
           <Input
+            id={inputId}
             className={`w-full ${error ? "border-red-500" : ""} ${
-              htmlInputAttrs.className || ""
+              className || ""
             }`}
-            {...htmlInputAttrs}
+            {...restHtmlInputAttrs}
           />
           <Image
             src="/icons/exclamation.svg"
@@ -103,6 +128,7 @@ export default function FormInput({
             alt={label}
             height={20}
             width={5}
+            unoptimized
           />
         </div>
       )}
