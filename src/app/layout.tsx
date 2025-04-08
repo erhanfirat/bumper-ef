@@ -18,6 +18,10 @@ const roboto = Roboto({
 export const metadata: Metadata = {
   title: "Bumper",
   description: "No risk to your business. No worries for your customers.",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+  },
   keywords: [
     "Bumper",
     "Car Service",
