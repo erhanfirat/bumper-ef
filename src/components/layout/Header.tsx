@@ -16,7 +16,7 @@ export default function Header() {
             <div className="w-px bg-gray-600"></div>
             <HeaderLink href="/drivers" label="For drivers" />
           </div>
-          <div className="flex items-center space-x-4">
+          <div className="items-center space-x-4 hidden sm:flex">
             <Button
               label="Partner login"
               size="sm"
