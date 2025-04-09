@@ -6,6 +6,7 @@ import Button from "../ui/Button";
 import FormInput from "../ui/FormInput";
 import InputRadio from "../ui/InputRadio";
 import { DealershipFormData } from "@/types/forms";
+import { submitDealershipForm } from "@/lib/formSubmit";
 
 export default function DealershipForm() {
   const {
@@ -27,7 +28,7 @@ export default function DealershipForm() {
   });
 
   const doSubmit = (data: DealershipFormData) => {
-    console.log("Form submitted successfully", data);
+    submitDealershipForm(data);
   };
 
   return (
@@ -37,6 +38,7 @@ export default function DealershipForm() {
     >
       <FormInput
         label="Name"
+        data-test="df-name-input"
         icon="/icons/user.svg"
         type="text"
         {...register("name", {
@@ -54,9 +56,11 @@ export default function DealershipForm() {
       />
       <FormInput
         label="Company"
+        data-test="df-company-input"
         icon="/icons/company.svg"
         type="text"
         {...register("company", {
+          required: "Company is required",
           maxLength: {
             value: 255,
             message: "Company cannot be longer than 255 characters",
@@ -66,9 +70,11 @@ export default function DealershipForm() {
       />
       <FormInput
         label="Mobile phone number"
+        data-test="df-mobile-input"
         type="tel"
         icon="/icons/phone.svg"
         {...register("mobile_phone", {
+          required: "Mobile phone is required",
           pattern: {
             value: /^0(\s*)7(\s*)(\d(\s*)){9}$/,
             message: "Mobile phone number is not valid",
@@ -78,9 +84,11 @@ export default function DealershipForm() {
       />
       <FormInput
         label="Email address"
+        data-test="df-email-input"
         type="text"
         icon="/icons/email.svg"
         {...register("email_address", {
+          required: "Email address is required",
           pattern: {
             value:
               /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
@@ -99,6 +107,7 @@ export default function DealershipForm() {
       />
       <FormInput
         label="Postcode"
+        data-test="df-postcode-input"
         icon="/icons/house.svg"
         {...register("postcode", {
           pattern: {
@@ -169,6 +178,7 @@ export default function DealershipForm() {
         icon="/icons/right-arrow.svg"
         className="w-full"
         rounded
+        data-test="df-submit-btn"
       />
     </form>
   );
