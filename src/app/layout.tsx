@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Oswald, Roboto } from "next/font/google";
 import Header from "@/components/layout/Header";
 import "./globals.css";
+import { ToastContainer } from "react-toastify";
 
 const oswald = Oswald({
   variable: "--font-oswald",
@@ -75,6 +76,17 @@ export default function RootLayout({
       >
         <Header />
         {children}
+        <ToastContainer
+          position="bottom-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+        />
       </body>
     </html>
   );

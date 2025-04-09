@@ -7,11 +7,13 @@ import FormInput from "../ui/FormInput";
 import InputRadio from "../ui/InputRadio";
 import { DealershipFormData } from "@/types/forms";
 import { submitDealershipForm } from "@/lib/formSubmit";
+import { toast } from "react-toastify";
 
 export default function DealershipForm() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<DealershipFormData>({
     defaultValues: {
@@ -28,7 +30,14 @@ export default function DealershipForm() {
   });
 
   const doSubmit = (data: DealershipFormData) => {
-    submitDealershipForm(data);
+    submitDealershipForm(data)
+      .then(() => {
+        reset();
+        toast.success("Registration is successful!");
+      })
+      .catch((err) => {
+        toast.success(`Ops! There is an error. ${err.message || ""}`);
+      });
   };
 
   return (
