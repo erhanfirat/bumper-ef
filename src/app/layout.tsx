@@ -3,25 +3,43 @@ import { ToastContainer } from "react-toastify";
 import { Oswald, Roboto } from "next/font/google";
 import Header from "@/components/layout/Header";
 import "./globals.css";
+import "react-toastify/dist/ReactToastify.css";
 
 const oswald = Oswald({
   variable: "--font-oswald",
   weight: ["400", "700"],
   subsets: ["latin"],
+  display: "swap",
 });
 
 const roboto = Roboto({
   weight: ["300", "400", "700"],
   subsets: ["latin"],
   variable: "--font-roboto",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: "Bumper",
-  description: "No risk to your business. No worries for your customers.",
+  metadataBase: new URL("https://bumper.com"),
+  title: {
+    template: "%s | Bumper",
+    default: "Bumper - Payment solutions for automotive businesses",
+  },
+  description:
+    "No risk to your business. No worries for your customers. Bumper offers flexible payment solutions for automotive dealerships and garages.",
+  applicationName: "Bumper",
+  creator: "Bumper",
+  publisher: "Bumper Ltd",
+  formatDetection: {
+    telephone: true,
+    email: true,
+    address: true,
+  },
   viewport: {
     width: "device-width",
     initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
   },
   authors: [
     {
@@ -33,6 +51,19 @@ export const metadata: Metadata = {
     icon: "/favicon/favicon.ico",
     shortcut: "/favicon/favicon.ico",
     apple: "/favicon/apple-touch-icon.png",
+  },
+  alternates: {
+    canonical: "https://bumper.com",
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
   },
   keywords: [
     "Bumper",
@@ -70,12 +101,12 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body
-        className={`${oswald.variable} ${roboto.variable} antialiased flex flex-col min-h-lvh`}
-      >
+    <html lang="en" className={`${oswald.variable} ${roboto.variable}`}>
+      <body className="antialiased flex flex-col min-h-lvh">
         <Header />
-        {children}
+        <div id="main-content" tabIndex={-1}>
+          {children}
+        </div>
         <ToastContainer
           position="bottom-right"
           autoClose={5000}

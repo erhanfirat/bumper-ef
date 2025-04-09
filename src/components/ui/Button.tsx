@@ -8,6 +8,7 @@ type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   size?: "sm" | "md" | "lg";
   rounded?: boolean;
   className?: string;
+  "aria-label"?: string;
 };
 
 export default function Button({
@@ -18,6 +19,7 @@ export default function Button({
   size = "md",
   rounded = false,
   className = "",
+  "aria-label": ariaLabel,
   ...htmlBtnAttrs
 }: ButtonProps) {
   const baseStyles = `group transition-all flex items-center justify-center font-medium 
@@ -47,16 +49,18 @@ export default function Button({
     <button
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]} ${className}`}
       onClick={onClick}
+      aria-label={ariaLabel || label}
       {...htmlBtnAttrs}
     >
       {label}
       {icon && (
         <Image
           src={icon}
-          alt={label}
+          alt=""
           width={sizeIcon[size]}
           height={sizeIcon[size]}
           className="transition-all ml-2 group-hover:brightness-0 group-hover:invert"
+          aria-hidden="true"
         />
       )}
     </button>

@@ -8,6 +8,7 @@ type ButtonProps = {
   variant?: "primary" | "secondary" | "tertiary";
   size?: "sm" | "md" | "lg";
   rounded?: boolean;
+  "aria-label"?: string;
 };
 
 export default function ButtonLink({
@@ -17,9 +18,10 @@ export default function ButtonLink({
   variant = "primary",
   size = "md",
   rounded = false,
+  "aria-label": ariaLabel,
 }: ButtonProps) {
   const baseStyles = `group transition-all flex items-center justify-center font-medium  
-    focus:outline-none cursor-pointer hover:text-white ${
+    focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 cursor-pointer hover:text-white ${
       rounded ? "rounded-full" : "rounded-md"
     } `;
 
@@ -45,15 +47,17 @@ export default function ButtonLink({
     <Link
       href={href}
       className={`${baseStyles} ${variantStyles[variant]} ${sizeStyles[size]}`}
+      aria-label={ariaLabel || label}
     >
       {label}
       {icon && (
         <Image
           src={icon}
-          alt={label}
+          alt=""
           width={sizeIcon[size]}
           height={sizeIcon[size]}
           className="transition-all ml-2 group-hover:invert"
+          aria-hidden="true"
         />
       )}
     </Link>
