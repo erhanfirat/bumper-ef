@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 type ButtonProps = {
@@ -17,8 +18,8 @@ export default function ButtonLink({
   size = "md",
   rounded = false,
 }: ButtonProps) {
-  const baseStyles = `flex items-center justify-center font-medium transition-colors 
-    focus:outline-none focus:ring-2 focus:ring-offset-2 cursor-pointer ${
+  const baseStyles = `group transition-all flex items-center justify-center font-medium  
+    focus:outline-none cursor-pointer hover:text-white ${
       rounded ? "rounded-full" : "rounded-md"
     } `;
 
@@ -47,12 +48,12 @@ export default function ButtonLink({
     >
       {label}
       {icon && (
-        <img
+        <Image
           src={icon}
           alt={label}
           width={sizeIcon[size]}
           height={sizeIcon[size]}
-          className="ml-2"
+          className="transition-all ml-2 group-hover:invert"
         />
       )}
     </Link>
