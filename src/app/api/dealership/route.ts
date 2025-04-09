@@ -10,10 +10,16 @@ export async function GET(req: NextRequest) {
 
   const page = parseInt(searchParams.get("page") || "0", 10);
   const limit = parseInt(searchParams.get("limit") || "10", 10);
+  const search = (searchParams.get("search") || "").toLowerCase();
 
   const start = page * limit;
   const end = start + limit;
-  const paginatedData = formDataList.slice(start, end);
+
+  const filtered = formDataList.filter((item) =>
+    item.company.toLowerCase().includes(search)
+  );
+
+  const paginatedData = filtered.slice(start, end);
 
   return NextResponse.json(paginatedData);
 }

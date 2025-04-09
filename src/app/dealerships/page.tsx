@@ -3,10 +3,12 @@
 import DealershipCard from "@/components/shared/DealershipCard";
 import SearchInput from "@/components/shared/SearchInput";
 import { useInfiniteDealerships } from "@/hooks/useInfiniteDealership";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Dealerships() {
-  const { dealerships, setSize, isReachingEnd } = useInfiniteDealerships();
+  const [searchStr, setSearchStr] = useState<string>("");
+  const { dealerships, setSize, isReachingEnd } =
+    useInfiniteDealerships(searchStr);
   const loaderRef = useRef(null);
 
   useEffect(() => {
@@ -25,7 +27,7 @@ export default function Dealerships() {
   }, [setSize, isReachingEnd]);
 
   const doSearch = (searchText: string) => {
-    console.log("search for:", searchText);
+    setSearchStr(searchText);
   };
 
   return (
@@ -40,7 +42,7 @@ export default function Dealerships() {
               onSearch={doSearch}
               label="Search Company"
               icon="/icons/company.svg"
-              placeholder="Start typing company"
+              placeholder="Start typing company and press Enter to search"
             />
           </div>
           {dealerships.map((dealership) => (
