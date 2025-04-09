@@ -16,10 +16,9 @@ export default function Input({
     <>
       <input
         type={type}
-        className={`border rounded-full px-4 py-2 focus:outline-none 
-          focus:ring-2 focus:ring-green-500 ${
-            error ? "border-red-500" : "border-black"
-          } ${className}`}
+        className={`border rounded-full px-4 py-2 focus:outline-none ${
+          error ? "border-red-500" : "border-black"
+        } ${className}`}
         {...htmlInputAttrs}
       />
       {error && <span className="text-red-500 text-sm mt-1">{error}</span>}
