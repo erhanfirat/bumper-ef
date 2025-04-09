@@ -1,11 +1,21 @@
+import { dummyData } from "@/lib/dummyData";
 import { dealershipFormSchema } from "@/lib/validators";
 import { DealershipFormData } from "@/types/forms";
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-const formDataList: DealershipFormData[] = [];
+const formDataList: DealershipFormData[] = dummyData;
 
-export async function GET() {
-  return NextResponse.json(formDataList);
+export async function GET(req: NextRequest) {
+  const { searchParams } = req.nextUrl;
+
+  const page = parseInt(searchParams.get("page") || "0", 10);
+  const limit = parseInt(searchParams.get("limit") || "10", 10);
+
+  const start = page * limit;
+  const end = start + limit;
+  const paginatedData = formDataList.slice(start, end);
+
+  return NextResponse.json(paginatedData);
 }
 
 export async function POST(req: Request) {
