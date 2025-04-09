@@ -144,7 +144,11 @@ export default function RegisterForm() {
             {...register("payment-type", {
               required: "Please select a payment type",
             })}
-            error={errors["payment-type"]?.message}
+            error={
+              typeof errors["payment-type"]?.message === "string"
+                ? errors["payment-type"]?.message
+                : undefined
+            }
             value="pay_later"
           />
           <InputRadio
@@ -152,13 +156,18 @@ export default function RegisterForm() {
             {...register("payment-type", {
               required: "Please select a payment type",
             })}
-            error={errors["payment-type"]?.message}
+            error={
+              typeof errors["payment-type"]?.message === "string"
+                ? errors["payment-type"]?.message
+                : undefined
+            }
             value="pay_now"
           />
         </div>
         {errors["payment-type"]?.message && (
           <span className="text-red-500 text-sm mt-1">
-            {errors["payment-type"]?.message}
+            {typeof errors["payment-type"]?.message === "string" &&
+              errors["payment-type"]?.message}
           </span>
         )}
       </div>
