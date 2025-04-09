@@ -141,6 +141,7 @@ export default function DealershipForm() {
         <div className="flex gap-2">
           <InputRadio
             label="PayLater"
+            data-test="df-pay-later"
             {...register("payment-type", {
               required: "Please select a payment type",
             })}
@@ -153,6 +154,7 @@ export default function DealershipForm() {
           />
           <InputRadio
             label="PayNow"
+            data-test="df-pay-now"
             {...register("payment-type", {
               required: "Please select a payment type",
             })}
