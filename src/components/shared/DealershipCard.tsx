@@ -4,7 +4,10 @@ import { memo } from "react";
 function DealershipCard({ data }: { data: DealershipFormData }) {
   return (
     <div className="border rounded-full p-4 shadow mb-4">
-      <h2 className="text-lg font-semibold">{data.company}</h2>
+      <h2 className="text-lg font-semibold">{data.name}</h2>
+      <p>
+        <strong>Company:</strong> {data.company}
+      </p>
       <p>
         <strong>Phone:</strong> {data.mobile_phone}
       </p>
