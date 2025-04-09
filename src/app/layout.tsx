@@ -70,7 +70,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${oswald.variable} ${roboto.variable} antialiased`}>
+      <body
+        className={`${oswald.variable} ${roboto.variable} antialiased flex flex-col min-h-lvh`}
+      >
         <Header />
         {children}
       </body>

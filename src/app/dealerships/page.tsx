@@ -31,7 +31,10 @@ export default function Dealerships() {
   return (
     <main className="flex-1 py-12 bg-slateblue">
       <div className="container mx-auto px-4">
-        <div className="max-w-xl mx-auto ">
+        <div className="max-w-3xl mx-auto ">
+          <h1 className="text-4xl font-bold text-white mb-8">
+            Interested Dealerships
+          </h1>
           <div className="bg-white rounded-4xl px-6 py-3">
             <SearchInput
               onSearch={doSearch}
@@ -44,7 +47,7 @@ export default function Dealerships() {
             <DealershipCard key={dealership.company} data={dealership} />
           ))}
           {!isReachingEnd && (
-            <div ref={loaderRef} className="text-center p-4">
+            <div ref={loaderRef} className="text-center p-4 text-white">
               Loading more...
             </div>
           )}

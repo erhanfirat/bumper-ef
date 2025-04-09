@@ -3,19 +3,21 @@ import { memo } from "react";
 
 function DealershipCard({ data }: { data: DealershipFormData }) {
   return (
-    <div className="border rounded-full p-4 shadow mb-4">
-      <h2 className="text-lg font-semibold">{data.name}</h2>
-      <p>
-        <strong>Company:</strong> {data.company}
+    <div className="bg-white rounded-4xl p-6 shadow mt-6">
+      <h2 className="text-xl font-bold border-b border-gray-300 py-3">
+        {data.name}
+      </h2>
+      <p className="flex justify-between border-b border-gray-300 py-3">
+        <strong>Company</strong> {data.company}
       </p>
-      <p>
-        <strong>Phone:</strong> {data.mobile_phone}
+      <p className="flex justify-between border-b border-gray-300 py-3">
+        <strong>Phone</strong> {data.mobile_phone}
       </p>
-      <p>
-        <strong>Email:</strong> {data.email_address}
+      <p className="flex justify-between border-b border-gray-300 py-3">
+        <strong>Email</strong> {data.email_address}
       </p>
-      <p>
-        <strong>Postcode:</strong> {data.postcode}
+      <p className="flex justify-between border-b border-gray-300 py-3">
+        <strong>Postcode</strong> {data.postcode}
       </p>
     </div>
   );
