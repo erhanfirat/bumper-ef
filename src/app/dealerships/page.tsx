@@ -3,7 +3,7 @@
 import DealershipCard from "@/components/shared/DealershipCard";
 import SearchInput from "@/components/shared/SearchInput";
 import { useInfiniteDealerships } from "@/hooks/useInfiniteDealership";
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 
 export default function Dealerships() {
   const [searchStr, setSearchStr] = useState<string>("");
@@ -11,12 +11,17 @@ export default function Dealerships() {
     useInfiniteDealerships(searchStr);
   const loaderRef = useRef(null);
 
-  useEffect(() => {
-    const observer = new IntersectionObserver(([entry]) => {
+  const observerCallback = useCallback(
+    ([entry]: IntersectionObserverEntry[]) => {
       if (entry.isIntersecting && !isReachingEnd) {
         setSize((prev) => prev + 1);
       }
-    });
+    },
+    [setSize, isReachingEnd]
+  );
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(observerCallback);
 
     const loaderEl = loaderRef.current;
     if (loaderEl) observer.observe(loaderEl);
@@ -24,11 +29,18 @@ export default function Dealerships() {
     return () => {
       if (loaderEl) observer.unobserve(loaderEl);
     };
-  }, [setSize, isReachingEnd]);
+  }, [observerCallback]);
 
   const doSearch = (searchText: string) => {
     setSearchStr(searchText);
   };
+
+  // Dealership kartlarını memoize et
+  const dealershipCards = useMemo(() => {
+    return dealerships.map((dealership) => (
+      <DealershipCard key={dealership.company} data={dealership} />
+    ));
+  }, [dealerships]);
 
   return (
     <main className="flex-1 py-12 bg-slateblue">
@@ -45,9 +57,7 @@ export default function Dealerships() {
               placeholder="Start typing company and press Enter to search"
             />
           </div>
-          {dealerships.map((dealership) => (
-            <DealershipCard key={dealership.company} data={dealership} />
-          ))}
+          {dealershipCards}
           {!isReachingEnd && (
             <div ref={loaderRef} className="text-center p-4 text-white">
               Loading more...

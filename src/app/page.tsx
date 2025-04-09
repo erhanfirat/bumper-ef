@@ -44,7 +44,7 @@ export default function Home() {
               <h3 className="text-4xl text-orange-500 py-6">
                 No risk to your business. No worries for your customers.
               </h3>
-              <p className="font-bold pb-3">It’s as simple as:</p>
+              <p className="font-bold pb-3">It's as simple as:</p>
               <ul className="space-y-6 py-8">
                 <li className="flex items-start gap-3 before:content-['1'] before:font-bold before:rounded-full before:w-5 before:h-5 before:flex before:items-center before:bg-orange-500 before:border before:text-sm before:justify-center">
                   <div className="flex flex-col flex-1">
@@ -60,8 +60,8 @@ export default function Home() {
                     <h4 className="font-bold text-sm">SPLIT IT</h4>
                     <p>
                       When the customer gets their bill or quote, your customer
-                      chooses the option to ‘PayLater’ and in just a few clicks
-                      they’ve been approved and have paid.
+                      chooses the option to 'PayLater' and in just a few clicks
+                      they've been approved and have paid.
                     </p>
                   </div>
                 </li>
@@ -69,7 +69,7 @@ export default function Home() {
                   <div className="flex flex-col flex-1">
                     <h4 className="font-bold text-sm">SORTED</h4>
                     <p>
-                      You and your customer part ways happy. You’re paid
+                      You and your customer part ways happy. You're paid
                       upfront, directly from Bumper, the customer repays Bumper
                       over their chosen payment plan.
                     </p>

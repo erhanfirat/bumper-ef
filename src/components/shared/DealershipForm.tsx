@@ -8,6 +8,7 @@ import InputRadio from "../ui/InputRadio";
 import { DealershipFormData } from "@/types/forms";
 import { submitDealershipForm } from "@/lib/formSubmit";
 import { toast } from "react-toastify";
+import { useCallback } from "react";
 
 export default function DealershipForm() {
   const {
@@ -29,22 +30,22 @@ export default function DealershipForm() {
     reValidateMode: "onChange",
   });
 
-  const doSubmit = (data: DealershipFormData) => {
-    submitDealershipForm(data)
-      .then(() => {
-        reset();
-        toast.success("Registration is successful!");
-      })
-      .catch((err) => {
-        toast.success(`Ops! There is an error. ${err.message || ""}`);
-      });
-  };
+  const doSubmit = useCallback(
+    (data: DealershipFormData) => {
+      submitDealershipForm(data)
+        .then(() => {
+          reset();
+          toast.success("Registration is successful!");
+        })
+        .catch((err) => {
+          toast.error(`Oops! There is an error. ${err.message || ""}`);
+        });
+    },
+    [reset]
+  );
 
   return (
-    <form
-      className="space-y-4"
-      onSubmit={handleSubmit((data) => doSubmit(data))}
-    >
+    <form className="space-y-4" onSubmit={handleSubmit(doSubmit)}>
       <FormInput
         label="Name"
         data-test="df-name-input"
@@ -100,7 +101,7 @@ export default function DealershipForm() {
           required: "Email address is required",
           pattern: {
             value:
-              /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
+              /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/,
             message: "Email address is not valid",
           },
           maxLength: {
@@ -143,7 +144,7 @@ export default function DealershipForm() {
           What services are you interested in?
         </p>
         <p className="text-gray-700 text-sm mt-[-6px] mb-2">
-          Please select the services you’re interested in offering your
+          Please select the services you're interested in offering your
           customers
         </p>
 
