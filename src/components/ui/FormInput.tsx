@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Input, { InputProps } from "./Input";
 
-type FormInputProps = InputProps & {
+export type FormInputProps = InputProps & {
   label: string;
   description?: string;
   icon?: string;

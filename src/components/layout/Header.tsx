@@ -15,7 +15,7 @@ export default function Header() {
           <div className="flex space-x-4 ">
             <HeaderLink href="/" label="For business" />
             <div className="w-px bg-gray-600"></div>
-            <HeaderLink href="/drivers" label="For drivers" />
+            <HeaderLink href="/dealerships" label="For drivers" />
           </div>
           <div className="items-center space-x-4 hidden sm:flex">
             <Button
