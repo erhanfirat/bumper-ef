@@ -1,8 +1,6 @@
 import Hero from "@/components/shared/Hero";
-import Button from "@/components/ui/Button";
 import ButtonLink from "@/components/ui/ButtonLink";
 import Image from "next/image";
-import { redirect } from "next/navigation";
 
 export default function Home() {
   return (
