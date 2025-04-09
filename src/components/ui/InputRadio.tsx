@@ -5,6 +5,7 @@ import { InputProps } from "./Input";
 
 export type InputRadioProps = InputProps & {
   label: string;
+  "data-test"?: string;
 };
 
 export default function InputRadio({
@@ -12,6 +13,7 @@ export default function InputRadio({
   label = "",
   ...htmlInputAttrs
 }: InputRadioProps) {
+  const { "data-test": dataTest, ...restInputAttrs } = htmlInputAttrs;
   const generateInputRadioIcons = () => {
     if (error) {
       return (
@@ -56,8 +58,9 @@ export default function InputRadio({
                         transition-colors hover:bg-[#DCE6E6]
                         has-[:checked]:bg-black has-[:checked]:text-white
                         ${error ? "border-red-500" : ""}`}
+        data-test={dataTest}
       >
-        <input type="radio" className="peer hidden" {...htmlInputAttrs} />
+        <input type="radio" className="peer hidden" {...restInputAttrs} />
         <span className="font-medium">{label}</span>
         {generateInputRadioIcons()}
       </label>
