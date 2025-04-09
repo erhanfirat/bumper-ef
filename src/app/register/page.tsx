@@ -1,4 +1,4 @@
-import RegisterForm from "@/components/shared/RegisterForm";
+import DealershipForm from "@/components/shared/DealershipForm";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
@@ -35,7 +35,7 @@ export default function Register() {
               Join our network
             </h2>
             <p className="text-gray-600  mb-6">Free to join, no monthly fees</p>
-            <RegisterForm />
+            <DealershipForm />
 
             <div className="mt-6 text-center">
               <p className="text-sm text-gray-600 ">
