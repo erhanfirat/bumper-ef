@@ -59,7 +59,11 @@ export default function FormInput({
           unoptimized
         />
       </div>
-      {error && <p className="text-red-500 text-sm mt-1">{error}</p>}
+      {error && (
+        <p aria-live="assertive" className="text-red-500 text-sm mt-1">
+          {error}
+        </p>
+      )}
     </div>
   );
 }
