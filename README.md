@@ -1,36 +1,172 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Bumper Dealership Test Case
 
-## Getting Started
+This project is a dealership registration and listing system built with **Next.js 14 (App Router)**, following **industry-standard best practices** in terms of architecture, performance, scalability, accessibility, SEO, and testing. It was developed by **Erhan Fırat** as part of a technical assessment and demonstrates a professional-grade, production-ready implementation.
 
-First, run the development server:
+---
+
+## Tech Stack
+
+- **Next.js 14 (App Router, Server Components, Turbopack)**
+- **React Hook Form + Zod** for robust form validation
+- **Tailwind CSS** for utility-first styling
+- **TypeScript** for type safety
+- **SWR (Infinite)** for data fetching and client-side caching
+- **Cypress** for E2E testing
+- **ESLint & Prettier** for code quality and formatting
+
+---
+
+## Features & Best Practices
+
+### Form Handling
+
+- Fully typed form with `React Hook Form`
+- Schema validation with `Zod`, including regex and character limits
+- Validation feedback shown on invalid entries
+
+### API Endpoints
+
+- `POST /api/dealership` — receives and validates form data
+- `GET /api/dealership?page=X&limit=Y&search=Z` — paginated + searchable endpoint
+- Typed data contracts between client and server
+
+### Infinite Scroll
+
+- Implemented with `useSWRInfinite`
+- Supports pagination and search filters
+- Avoids redundant requests with `getKey` logic
+
+### Search Functionality
+
+- Live filtering through search input on dealership list
+- Debounced search implemented for performance
+
+### Data Caching
+
+- SWR handles caching, deduplication, revalidation
+- Cache is automatically updated on form submission
+
+### Performance
+
+- API responses paginated and searchable
+- List components are memoized where applicable
+- Function references are memoized using useCallback
+- Minimal bundle size via selective imports and creating atomic level components
+
+### Component Design
+
+- Atomic and reusable components
+- `Card`, `FormInput`, and `SearchBar` are isolated with clear props
+
+### SEO
+
+- Semantic HTML usage
+- Accessible inputs with proper labels and error roles
+
+### Accessibility
+
+- Keyboard navigable
+- ARIA labels and roles on interactive elements
+- Form errors announced with `aria-live="assertive"`
+
+### E2E Testing
+
+- Cypress integrated with fully working tests
+- Validation tests for each form field
+- Success case tested with navigation and list rendering
+
+### Project Structure
+
+```bash
+src/
+|
+├── app/                            # Next.js App Router structure
+|   ├── api/                        # API routes
+|   ├── dealerships/                # Dealerships page
+|   |   └── page.tsx                # Dealerships page component
+|   |
+|   ├── register/                   # Register page
+|   |   ├── metadata.ts             # Register page metadata
+|   |   └── page.tsx                # Register page component
+|   |
+|   ├── globals.css                 # Global CSS styles
+|   ├── layout.tsx                  # Root layout component
+|   └── page.tsx                    # Home page component
+|
+├── components/                     # Reusable components
+|   ├── icons/                      # SVG icon components
+|   |   └── Star.tsx                # Star icon component
+|   |
+|   ├── layout/                     # Layout components
+|   |   └── Header.tsx              # Header component
+|   |
+|   ├── shared/                     # Shared complex components
+|   |   ├── DealershipCard.tsx      # Dealership card component
+|   |   ├── DealershipForm.tsx      # Dealership registration form
+|   |   ├── Hero.tsx                # Hero section component
+|   |   └── SearchInput.tsx         # Search input component
+|   |
+|   └── ui/                         # Basic UI components
+|       ├── Button.tsx              # Button component
+|       ├── ButtonLink.tsx          # Link-styled button
+|       ├── FormInput.tsx           # Form input component
+|       ├── HeaderLink.tsx          # Links inside header
+|       ├── Input.tsx               # Base input component
+|       └── InputRadio.tsx          # Radio button component
+|
+├── hooks/                          # Custom React Hooks
+|   └── useInfiniteDealership.ts    # Hook for infinite scrolling dealerships
+|
+├── lib/                            # Helper functions and services
+|   ├── api.ts                      # API request helpers
+|   ├── dummyData.ts                # Test data
+|   ├── formSubmit.ts               # Form submission functions
+|   └── validators.ts               # Form validation schemas
+|
+└── types/                          # TypeScript type definitions
+    └── forms.d.ts                  # Form data types
+```
+
+---
+
+## How to Run
+
+### 1. Install Dependencies
+
+```bash
+npm install
+```
+
+### 2. Create .env File
+
+Create a `.env.local` file in root with:
+
+```bash
+NEXT_PUBLIC_API_BASE_URL=http://localhost:3000/api
+```
+
+### 3. Run Dev Server
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Running Cypress Tests
 
-## Learn More
+```bash
+npm run test
+```
 
-To learn more about Next.js, take a look at the following resources:
+Or run headless:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run test-h
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Crafted with care by **Erhan Fırat** ✨
